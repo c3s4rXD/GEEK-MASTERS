@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef37f5a9-b72b-4438-9091-054f0dc79f63" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GeekMasters.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juegoGeekMasters/GUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juegoGeekMasters/Header.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juegoGeekMasters/juegoGeek.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recursos/42.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recursos/ayuda.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recursos/cohete.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recursos/corazon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recursos/dados.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recursos/dragon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recursos/meeple.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recursos/puntuacion.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recursos/superHeroe.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juegoGeekMasters/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juegoGeekMasters/GUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,9 +44,18 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Cesar/IdeaProjects/GeekMasters/src/recursos"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Cesar\IdeaProjects\GeekMasters\src\recursos" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Cesar\IdeaProjects\GeekMasters\src\recursos" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
