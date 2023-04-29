@@ -2,6 +2,11 @@ package juegoGeekMasters;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.net.http.WebSocket;
 import java.awt.GridBagLayout.*;
 
 
@@ -23,6 +28,8 @@ public class GUI extends JFrame {
     private ImageIcon imagenDados;
 
     private JTextArea resultados;
+
+    private Listener listener;
 
     /**
      * Constructor of GUI class
@@ -61,8 +68,6 @@ public class GUI extends JFrame {
         //se cargan las imagen del dado por defecto
         imagenDados = new ImageIcon(getClass().getResource("/recursos/dados.jpg"));
         dados = new JLabel(imagenDados);
-        //se crea el boton para lanzar los dados
-        //lanzarDados = new JButton("lanzarDados");
         //creamos los JPanel
         //paneles
         panelDadosActivos = new JPanel();
@@ -83,8 +88,6 @@ public class GUI extends JFrame {
         //se cargan las imagen del dado por defecto
         imagenDados = new ImageIcon(getClass().getResource("/recursos/dados.jpg"));
         dados = new JLabel(imagenDados);
-        //se crea el boton para lanzar los dados
-        //lanzarDados = new JButton("lanzarDados");
         //creamos los JPanel
         //paneles
         panelDadosInactivos = new JPanel();
@@ -108,8 +111,6 @@ public class GUI extends JFrame {
         //se cargan las imagen del dado por defecto
         imagenDados = new ImageIcon(getClass().getResource("/recursos/dados.jpg"));
         dados = new JLabel(imagenDados);
-        //se crea el boton para lanzar los dados
-        //lanzarDados = new JButton("lanzarDados");
         //creamos los JPanel
         //paneles
         panelDadosUsados = new JPanel();
@@ -132,8 +133,6 @@ public class GUI extends JFrame {
         //se cargan las imagen del dado por defecto
         imagenDados = new ImageIcon(getClass().getResource("/recursos/puntuacion.jpg"));
         dados = new JLabel(imagenDados);
-        //se crea el boton para lanzar los dados
-        //lanzarDados = new JButton("lanzarDados");
         //creamos los JPanel
         //paneles
         panelTarjetaPuntuacion = new JPanel();
@@ -156,8 +155,6 @@ public class GUI extends JFrame {
         //se cargan las imagen del dado por defecto
         imagenDados = new ImageIcon(getClass().getResource("/recursos/ayuda.jpg"));
         dados = new JLabel(imagenDados);
-        //se crea el boton para lanzar los dados
-        //lanzarDados = new JButton("lanzarDados");
         //creamos los JPanel
         //paneles
         panelAyuda = new JPanel();
@@ -166,12 +163,25 @@ public class GUI extends JFrame {
         panelAyuda.add(dados);
         //panelDadosActivos.add(lanzarDados);
         constraints.gridx=0;
-        constraints.gridy=3;
+        constraints.gridy=4;
         constraints.gridwidth=2;
         constraints.fill=GridBagConstraints.NONE;
         constraints.anchor=GridBagConstraints.CENTER;
 
         this.add(panelAyuda, constraints);
+
+
+
+
+
+
+        lanzarDados = new JButton("lanzarDados");
+        constraints.gridx=0;
+        constraints.gridy=3;
+        constraints.gridwidth=2;
+        constraints.fill=GridBagConstraints.NONE;
+        constraints.anchor=GridBagConstraints.CENTER;
+        this.add(lanzarDados, constraints);
 
 
 
@@ -196,11 +206,43 @@ public class GUI extends JFrame {
         });
     }
 
+
+
+
     /**
      * inner class that extends an Adapter Class or implements Listeners used by GUI class
      */
-    private class Escucha {
+    private class Listener implements ActionListener, MouseListener {
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
     }
 }
 
