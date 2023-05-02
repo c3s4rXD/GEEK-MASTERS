@@ -3,6 +3,9 @@ package juegoGeekMasters;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.GridBagLayout.*;
+import java.awt.event.*;
+import java.net.http.WebSocket;
+//import java.net.http.WebSocket;
 
 
 /**
@@ -23,6 +26,8 @@ public class GUI extends JFrame {
     private ImageIcon imagenDados;
 
     private JTextArea resultados;
+
+    //private Listener listener;
 
     /**
      * Constructor of GUI class
@@ -166,12 +171,25 @@ public class GUI extends JFrame {
         panelAyuda.add(dados);
         //panelDadosActivos.add(lanzarDados);
         constraints.gridx=0;
-        constraints.gridy=3;
+        constraints.gridy=4;
         constraints.gridwidth=2;
         constraints.fill=GridBagConstraints.NONE;
         constraints.anchor=GridBagConstraints.CENTER;
 
         this.add(panelAyuda, constraints);
+
+
+
+
+
+        //listener = new Listener();
+        lanzarDados = new JButton("lanzarDados");
+        constraints.gridx=0;
+        constraints.gridy=3;
+        constraints.gridwidth=2;
+        constraints.fill=GridBagConstraints.NONE;
+        constraints.anchor=GridBagConstraints.CENTER;
+        this.add(lanzarDados, constraints);
 
 
 
@@ -199,8 +217,37 @@ public class GUI extends JFrame {
     /**
      * inner class that extends an Adapter Class or implements Listeners used by GUI class
      */
-    private class Escucha {
+    private class listener implements ActionListener, MouseListener {
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
     }
 }
 
