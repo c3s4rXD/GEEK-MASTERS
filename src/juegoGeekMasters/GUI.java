@@ -61,7 +61,7 @@ public class GUI extends JFrame {
         GridBagConstraints constraints = new GridBagConstraints();
         //Create Listener Object and Control Object
         //Set up JComponents
-        headerProject = new Header("MESA DE JUEGO", Color.BLACK);
+        headerProject = new Header("Game Table", Color.BLACK);
         constraints.gridx=0;
         constraints.gridy=0;
         constraints.gridwidth=2;
