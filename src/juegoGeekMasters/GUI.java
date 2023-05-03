@@ -8,6 +8,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.net.http.WebSocket;
 import java.awt.GridBagLayout.*;
+import java.awt.event.*;
+import java.net.http.WebSocket;
+//import java.net.http.WebSocket;
 
 
 /**
@@ -29,7 +32,8 @@ public class GUI extends JFrame {
 
     private JTextArea resultados;
 
-    private Listener listener;
+    //private Listener listener;
+
 
     /**
      * Constructor of GUI class
@@ -174,6 +178,19 @@ public class GUI extends JFrame {
 
 
 
+        //listener = new Listener();
+        lanzarDados = new JButton("lanzarDados");
+        constraints.gridx=0;
+        constraints.gridy=3;
+        constraints.gridwidth=2;
+        constraints.fill=GridBagConstraints.NONE;
+        constraints.anchor=GridBagConstraints.CENTER;
+        this.add(lanzarDados, constraints);
+
+
+
+
+
 
         lanzarDados = new JButton("lanzarDados");
         constraints.gridx=0;
@@ -212,7 +229,8 @@ public class GUI extends JFrame {
     /**
      * inner class that extends an Adapter Class or implements Listeners used by GUI class
      */
-    private class Listener implements ActionListener, MouseListener {
+    private class listener implements ActionListener, MouseListener {
+
 
         @Override
         public void actionPerformed(ActionEvent e) {
