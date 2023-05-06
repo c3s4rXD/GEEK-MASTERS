@@ -4,11 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.net.http.WebSocket;
-import java.awt.GridBagLayout.*;
-import java.awt.event.*;
 import java.net.http.WebSocket;
 import java.util.Objects;
 //import java.net.http.WebSocket;
@@ -28,12 +23,12 @@ public class GUI extends JFrame {
     private JButton iniciar, ayuda, salida;
     private ImageIcon dadoImagen;
     private juegoGeek juegoGeek;
-    private int banderaInicio=0, banderaDado=0, poder=0, banderaAccion=0;
+    private int banderaInicio=0, banderaDado=0, poder=0, banderAccion=0;
     private int[] caras;
     private Header header;
     private JPanel[] panelesAUsar;
     private Listener listener;
-    private JLabel scoreTable;
+    private JLabel tablaPuntuacion;
 
 
 
@@ -43,7 +38,7 @@ public class GUI extends JFrame {
      */
     public GUI(){
         initGUI();
-        //Default JFrame configuration
+        // configuracion de los JFrame
         this.setTitle("Geek Out Masters");
         //this.setUndecorated(true);
         this.setBackground(new Color(255,255,255,255));
@@ -59,26 +54,167 @@ public class GUI extends JFrame {
      * create Listener and control Objects used for the GUI class
      */
     private void initGUI() {
-        //Set up JFrame Container's Layout
+        //configurar contenedores y layouts
         this.getContentPane().setLayout(new GridBagLayout());
         GridBagConstraints constraints=new GridBagConstraints();
 
-        //Create Listener Object and Control Object
-        listener=new Listener();
-        juegoGeek =new juegoGeek();
+        //Crear escuchas y objeto a controlar
+        listener = new Listener();
+        juegoGeek=new juegoGeek();
 
-        //Set up JComponents
-        dadoImagen=new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/scoreTable.jpg")));
-        scoreTable=new JLabel(dadoImagen);
+        //configurar componentes
+        dadoImagen=new ImageIcon(Objects.requireNonNull(getClass().getResource("/recursos/puntuacion.jpg")));
+        tablaPuntuacion=new JLabel(dadoImagen);
         /*
-         * Panel creation
-         */
+        * creacion de los paneles
+        */
         panelesAUsar=new JPanel[4];
 
-        panelesAUsar[0]=new JPanel();//This is the inactive dice panel.
-        panelesAUsar[1]=new JPanel();//This is the dice used panel.
-        panelesAUsar[2]=new JPanel();//This is your dice panel.
-        panelesAUsar[3]=new JPanel();//This is score dice panel
+        panelesAUsar[0]=new JPanel();//este es el panel para dados inactivos
+        panelesAUsar[1]=new JPanel();//este es el panel para dados usados
+        panelesAUsar[2]=new JPanel();//este es el panel para dados activos
+        panelesAUsar[3]=new JPanel();//este es el panel para la tabla de puntuacion
+
+        /*
+         * interfaz para el header
+         */
+        header = new Header("Tabla De Juego Geek Out Master", Color.BLACK);
+        constraints.gridx=0;
+        constraints.gridy=0;
+        constraints.gridwidth=0;
+        constraints.fill=GridBagConstraints.HORIZONTAL;
+        this.add(header, constraints);
+
+        /*
+         * boton de ayuda
+         */
+        ayuda=new JButton("¿Como Jugar?");
+        ayuda.addActionListener(listener);
+        constraints.gridx=0;
+        constraints.gridy=1;
+        constraints.gridwidth=1;
+        constraints.fill=GridBagConstraints.NONE;
+        constraints.anchor=GridBagConstraints.LINE_START;
+        this.add(ayuda, constraints);
+
+        /*
+         * boton de salida
+         */
+        salida=new JButton("  SALIDA  ");
+        salida.addActionListener(listener);
+        constraints.gridx=2;
+        constraints.gridy=1;
+        constraints.gridwidth=2;
+        constraints.fill=GridBagConstraints.NONE;
+        constraints.anchor=GridBagConstraints.LINE_END;
+        this.add(salida, constraints);
+
+        /*
+         * creacion de los dados
+         * añadir los listener
+         */
+        dado=new JButton[10];
+
+        dado[0]=new JButton(); dado[0].addActionListener(listener);
+        dado[1]=new JButton(); dado[1].addActionListener(listener);
+        dado[2]=new JButton(); dado[2].addActionListener(listener);
+        dado[3]=new JButton(); dado[3].addActionListener(listener);
+        dado[4]=new JButton(); dado[4].addActionListener(listener);
+        dado[5]=new JButton(); dado[5].addActionListener(listener);
+        dado[6]=new JButton(); dado[6].addActionListener(listener);
+        dado[7]=new JButton(); dado[7].addActionListener(listener);
+        dado[8]=new JButton(); dado[8].addActionListener(listener);
+        dado[9]=new JButton(); dado[9].addActionListener(listener);
+
+        /*
+         * imagen inicial del dado
+         */
+        dadoImagen=new ImageIcon(Objects.requireNonNull(getClass().getResource("/recursos/42.jpg")));
+        dado[0].setIcon(dadoImagen);
+        dado[1].setIcon(dadoImagen);
+        dado[2].setIcon(dadoImagen);
+        dado[3].setIcon(dadoImagen);
+        dado[4].setIcon(dadoImagen);
+        dado[5].setIcon(dadoImagen);
+        dado[6].setIcon(dadoImagen);
+        dado[7].setIcon(dadoImagen);
+        dado[8].setIcon(dadoImagen);
+        dado[9].setIcon(dadoImagen);
+
+        /*
+         * panel para los dados inactivos
+         */
+        panelesAUsar[0]=new JPanel();
+        panelesAUsar[0].setPreferredSize(new Dimension(600,400));
+        panelesAUsar[0].setBorder(BorderFactory.createTitledBorder("Dados Inactivos."));
+        constraints.gridx=0;
+        constraints.gridy=2;
+        constraints.gridwidth=1;
+        constraints.fill=GridBagConstraints.BOTH;
+        constraints.anchor=GridBagConstraints.CENTER;
+        add(panelesAUsar[0], constraints);
+
+        /*
+         * panel para los dados usados
+         */
+        panelesAUsar[1]=new JPanel();
+        panelesAUsar[1].setPreferredSize(new Dimension(600,400));
+        panelesAUsar[1].setBorder(BorderFactory.createTitledBorder("Dados Usados"));
+        constraints.gridx=1;
+        constraints.gridy=2;
+        constraints.gridwidth=1;
+        constraints.fill=GridBagConstraints.BOTH;
+        constraints.anchor=GridBagConstraints.CENTER;
+        add(panelesAUsar[1], constraints);
+
+        /*
+         * panel para los dados activos
+         */
+        panelesAUsar[2]=new JPanel();
+        panelesAUsar[2].setPreferredSize(new Dimension(600,400));
+        panelesAUsar[2].setBorder(BorderFactory.createTitledBorder("Dados Activos."));
+        panelesAUsar[2].add(dado[0]); dado[0].setEnabled(false);
+        panelesAUsar[2].add(dado[1]); dado[1].setEnabled(false);
+        panelesAUsar[2].add(dado[2]); dado[2].setEnabled(false);
+        panelesAUsar[2].add(dado[3]); dado[3].setEnabled(false);
+        panelesAUsar[2].add(dado[4]); dado[4].setEnabled(false);
+        panelesAUsar[2].add(dado[5]); dado[5].setEnabled(false);
+        panelesAUsar[2].add(dado[6]); dado[6].setEnabled(false);
+        panelesAUsar[2].add(dado[7]); dado[7].setEnabled(false);
+        panelesAUsar[2].add(dado[8]); dado[8].setEnabled(false);
+        panelesAUsar[2].add(dado[9]); dado[9].setEnabled(false);
+        constraints.gridx=1;
+        constraints.gridy=3;
+        constraints.gridwidth=1;
+        constraints.fill=GridBagConstraints.NONE;
+        constraints.anchor=GridBagConstraints.CENTER;
+        add(panelesAUsar[2], constraints);
+
+        /*
+         * panel para la tabla de puntuacion
+         */
+        panelesAUsar[3]=new JPanel();
+        panelesAUsar[3].setPreferredSize(new Dimension(600,400));
+        panelesAUsar[3].setBorder(BorderFactory.createTitledBorder("Tabla De Puntuacion"));
+        panelesAUsar[3].add(tablaPuntuacion);
+        constraints.gridx=2;
+        constraints.gridy=2;
+        constraints.gridwidth=2;
+        constraints.fill=GridBagConstraints.BOTH;
+        constraints.anchor=GridBagConstraints.CENTER;
+        add(panelesAUsar[3], constraints);
+
+        /*
+         * boton para iniciar el juego
+         */
+        iniciar=new JButton("Iniciar");
+        iniciar.addActionListener(listener);
+        constraints.gridx=1;
+        constraints.gridy=4;
+        constraints.gridwidth=2;
+        constraints.fill=GridBagConstraints.NONE;
+        constraints.anchor=GridBagConstraints.CENTER;
+        add(iniciar, constraints);
 
 
 
@@ -91,7 +227,8 @@ public class GUI extends JFrame {
      *             the program is execute by console.
      */
     public static void main(String[] args){
-        EventQueue.invokeLater(() -> {
+        EventQueue.invokeLater(() ->
+        {
             GUI miProjectGUI = new GUI();
         });
     }
@@ -102,36 +239,10 @@ public class GUI extends JFrame {
     /**
      * inner class that extends an Adapter Class or implements Listeners used by GUI class
      */
-    private class listener implements ActionListener, MouseListener {
-
+    private class listener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
 
         }
     }
